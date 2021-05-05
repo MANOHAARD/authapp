@@ -19,11 +19,8 @@
                         <div class="card" style="width: 22rem;">
                             <img src="{% static 'img/download.jpg' %}" class="card-img-top mt-3" style="width: 50%;display: block;margin-left: auto;margin-right: auto;" alt="logo">
                             <div class="card-body">
-                                <a href="#" class="btn btn-sm w-100 btn-primary"><i class="fab fa-facebook"> Login with Facebook</i></a>
+                                <h6 class="card-title text-muted">Provide an email to reset password.</h6>
                                 <div class="row mt-2">
-                                    <div class="col-md-5"><hr></div>
-                                    <div class="col-md-2"><h6 class="text-muted">OR</h6></div>
-                                    <div class="col-md-5"><hr></div>
 
                                     {% if messages %}
                                         {% for message in messages %}
@@ -33,39 +30,34 @@
                                         {% endfor %}
                                     {% endif %}
                                     
-                                    <form action="{% url 'login' %}" method="post">
+                                    <form action="{% url 'reset-email' %}" method="post">
 
                                         {% csrf_token %}
 
                                         <div class="form-group">
                                         <label for=""></label>
-                                        <input type="text"
-                                            class="form-control form-control-sm" name="username" value="{{data.username}}" id="username" aria-describedby="helpId" placeholder="Username">
-                                        <small id="helpId" class="form-text text-muted"></small>
+                                        <input type="email" class="form-control form-control-sm" value="{{data.email}}" name="email" id="email" aria-describedby="emailHelpId" placeholder="Email">
+                                        <small id="emailHelpId" class="form-text text-muted"></small>
                                         </div>
 
-                                        <div class="form-group">
-                                        <label for=""></label>
-                                        <input type="password" class="form-control form-control-sm" value="{{data.newpassword}}" name="password" id="newpassword" placeholder="Password">
-                                        </div>
-
-                                        <button type="submit" class="btn w-100 btn-primary mt-3"> Login </button>
+                                        <button type="submit" class="btn w-100 btn-primary mt-3"> Reset Email ID </button>
 
                                     </form>
 
-                                
                                 </div>
 
                                 <div class="card mt-4">
                                     <div class="card-body">
-                                        If don't have an account?? <a name="" id="" href="{% url 'register' %}" role="button"> Register >></a>
+                                        If already had an account?? <a name="" id="" class="" href="{% url 'login' %}" role="button"> LOGIN </a><br/>
                                     </div>
                                 </div>
+
                                 <div class="card mt-4">
                                     <div class="card-body">
-                                        Forgot your password?? <a name="" id="" class="" href="{% url 'reset-email' %}" role="button"> RESET HERE </a>
+                                        Don't have an account?? <a name="Register" id="" class="" href="{% url 'register' %}" role="button"> REGISTER </a>
                                     </div>
                                 </div>
+
                             </div>
                     </div>
                     </div>
